@@ -33,11 +33,11 @@ def crecientes():
         else:
             while (not  p.pila_vacia() and p.elemento_cima() >= dato):
                # print(str(dato) + 'numero agregado')#str(dato)convierte el dato en un string
-                '''
+                
                 if not p.pila_vacia():   # ingresa cuando hay al menos un elemento en P
                     while not p.pila_vacia() and p.elemento_cima() >= dato:
-                '''
-                p_aux.apilar(p.desapilar())#el elemento que desapila en p lo apilo en p_aux
+            
+                        p_aux.apilar(p.desapilar())#el elemento que desapila en p lo apilo en p_aux
                 
             p.apilar(dato)
 
