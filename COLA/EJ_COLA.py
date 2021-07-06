@@ -1,15 +1,15 @@
 from TDA_COLA import Cola,encolar,desencolar,cola_vacia,tamanio_cola,colaint,colaintpn,colacadenas,colastring,barrido_cola,en_frente,mover_final
 
-'''
+
 #EJ Nº11
+'''
 Dada una cola con personajes de la saga Star Wars, de los cuales se conoce su nombre y planeta
 de origen. Desarrollar las funciones necesarias para resolver las siguientes actividades:
-A. mostrar los personajes del planeta Alderaan, Endor y Tatooine
-B. indicar el plantea natal de Luke Skywalker y Han Solo
-C. insertar un nuevo personaje antes del maestro Yoda
-D. eliminar el personaje ubicado después de Jar Jar Binks'''
+A. mostrar los personajes del planeta Alderaan, Endor y Tatooine.
+B. indicar el plantea natal de Luke Skywalker y Han Solo.
+C. insertar un nuevo personaje antes del maestro Yoda.
+D. eliminar el personaje ubicado después de Jar Jar Binks.
 '''
-
 def starwarsplanet(): 
     starwars = Cola()
     tatooine = Cola()
@@ -19,13 +19,13 @@ def starwarsplanet():
     aux = Cola()
 
 
-    character = ['Luke Skywalker','Han Solo','Yoda','Jar Jar Binks','Nippet','Leila Organa','Chewbacca']
-    planet =    ['Tatooine', 'Corellia', 'Dagobah', 'Naboo', 'Endor', 'Alderaan', 'Kashyyyk']
+    personajes = ['Luke Skywalker','Han Solo','Yoda','Jar Jar Binks','Nippet','Leila Organa','Chewbacca','C3P0','R2D2']
+    planet =    ['Tatooine', 'Corellia', 'Dagobah', 'Naboo', 'Endor', 'Alderaan', 'Kashyyyk','None','Moon']
 
 
 
-    for elemento in range(0,7):
-        personaje, planeta = character[elemento], planet[elemento]
+    for elemento in range(0,8):
+        personaje, planeta = personaje[elemento], planet[elemento]
         encolar(starwars, [personaje, planeta])#Personaje es posicion 0 y planeta posicion 1
     print('Cola de personajes con su planeta origen:')
     barrido_cola(starwars)
@@ -61,13 +61,20 @@ def starwarsplanet():
         if charac[0] == 'Han Solo':
             print('el planete de origen de',charac[0],'es',charac[1])
 
-
-#PUNTO C
-
+            if charac[0] == ''
 
 
-#PUNTO D
-'''
+#PUNTO C Insertar un nuevo personaje antes del maestro Yoda.
+
+personaje.push(yoda)
+while not cola_vacia(yoda):
+    charac = encolar (yoda)
+    push.personaje(yoda)
+
+
+
+#PUNTO D Eliminar el personaje ubicado después de Jar Jar Binks.
+
 '''
 
 ############################################################################################################
@@ -81,12 +88,15 @@ def ordenados():
     cola1 = Cola()
     cola2 = Cola()
 
+# ver si poder usar vector
+# vector numeros_enteros [cargargo los datos]
+    
     while tamanio_cola(cola1)<5:
         dato = int(input('ingrese un numero '))
         encolar(cola1, dato)
     print('cola 1')
-    barrido_cola(cola1)
-    while tamanio_cola(cola2)<7:
+    barrido_cola(cola1)# en lugar de print utilizo el tda
+    while tamanio_cola(cola2)<5:#cargo menos de 7 elementos
         dato = int(input('ingrese un numero '))
         encolar(cola2, dato)
     print('cola 2')
@@ -106,6 +116,8 @@ def ordenados():
     print('colas ordenadas')
     barrido_cola(cola1)
 
+
+
 ############################################################################################################
 #EJ Nº16
 '''
@@ -119,8 +131,7 @@ c. cargue dos documentos del staff de TI.
 d. cargue un documento del gerente.
 e. imprima los dos primeros documentos de la cola.
 f. cargue dos documentos de empleados y uno de gerente.
-g. 
-imprima todos los documentos de la cola de impresión.
+g. imprima todos los documentos de la cola de impresión.
 '''
 
 #############################################################################################################
@@ -192,3 +203,7 @@ def MarvelUniverse():
         print('el personaje',c[0],'se encuentra y su nombre es',c[1])
     else:
         print('el personaje', c[0],'no se encuentra')
+
+
+
+
