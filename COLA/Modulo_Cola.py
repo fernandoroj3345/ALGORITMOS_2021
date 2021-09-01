@@ -1,12 +1,4 @@
-from EJ_COLA import *
-'''
-MarvelUniverse()
-ordenados()
-'''
-'''
+from EJ_COLA import starwarsplanet
+
 starwarsplanet()
 
-suma()
-
-'''
-ordenados()
