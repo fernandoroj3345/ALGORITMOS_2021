@@ -1,5 +1,5 @@
 from random import randint
-from tdapila import Pila
+from tdapila import Pila7
 
 # EJ 1 Determinar el número de ocurrencias de un determinado elemento en una pila.
 def ocurrencia():
