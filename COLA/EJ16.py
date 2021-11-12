@@ -1,6 +1,6 @@
 from TDA_COLA import Cola,encolar,desencolar,cola_vacia,tamanio_cola,colaint,colaintpn,colacadenas,colastring,barrido_cola,en_frente,mover_final
 from TDA_HEAP import *
-
+#esto va para el commit
 cola_prioridad = HeapMax()
 
 from TDA_COLA import Cola,encolar,desencolar,cola_vacia,tamanio_cola,colaint,colaintpn,colacadenas,colastring,barrido_cola,en_frente,mover_final
