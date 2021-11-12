@@ -1,22 +1,5 @@
 from TDA_COLA import Cola,encolar,desencolar,cola_vacia,tamanio_cola,colaint,colaintpn,colacadenas,colastring,barrido_cola,en_frente,mover_final
 from TDA_HEAP import *
-#EJ Nº16
-
-#Utilice cola de prioridad, para atender la cola de impresión tomando en cuenta el siguiente
-#criterio (1- empleados, 2- Staff de tecnologías de la información “TI”, 3- Gerente), y resuelva la
-#siguiente situación:
-#A. cargue tres documentos de empleados (cada documento se representa solamente con
-#un nombre).
-#B. imprima el primer documento de la cola (solamente mostrar el nombre de este por pantalla).
-#C. cargue dos documentos del staff de TI.
-#D. cargue un documento del gerente.
-#E. imprima los dos primeros documentos de la cola.
-#F. cargue dos documentos de empleados y uno de gerente.
-#G. imprima todos los documentos de la cola de impresión.
-
-# Utilice cola de prioridad, para atender la cola de impresión tomando en cuenta el siguiente
-# criterio (1- empleados, 2- staff de tecnologías de la información “TI”, 3- gerente), y resuelva la
-# siguiente situación:
 
 cola_prioridad = HeapMax()
 
