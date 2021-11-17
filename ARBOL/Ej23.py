@@ -77,7 +77,7 @@ criaturas.cargar_descripcion(criatura)
 
 
 
-print('\nInformacion de la criatura Talos:') #C
+print('\nInformacion de la criatura Talos:') #CC
 criaturas.mostrar_informacion('Talos')
 
 
