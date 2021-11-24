@@ -1,5 +1,5 @@
 from tda_grafo import Grafo
-'''Implementar un grafo no dirigido para almacenar puntos turísticos de interés de un determinado
+'''Implementar un grafo no dirigido(digrafo) para almacenar puntos turísticos de interés de un determinado
 país teniendo en cuenta los siguientes requerimientos:
 A. Debe ser un grafo completo es decir que todos los vértices se deben conectar con todos;
 B. Cargar los siguientes lugares (con sus coordenadas de latitud y longitud) templos de: Atenas

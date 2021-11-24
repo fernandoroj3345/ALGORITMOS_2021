@@ -34,7 +34,7 @@ def decimal_binario(numero):
         return ""
     else:
         return decimal_binario(numero//2) + str(numero % 2)
-
+assert decimal_binario["se cargo mal"]
 #################################################################################################################
 
 #EJ 22

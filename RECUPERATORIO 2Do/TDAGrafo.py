@@ -1,9 +1,10 @@
-from TDA_Cola import Cola
-from TDA_HEAP import HeapMin
-from tda_pila import Pila
+from TDALista import Lista
+from TDACola import Cola
+from TDA_HEAPMIN import HeapMin
+from TDAPILA import Pila
 from math import inf
 from copy import deepcopy
-from TDA_Lista import Lista
+
 
 class Grafo(object):
 
@@ -153,12 +154,12 @@ class Grafo(object):
             vertice_aux = self.inicio.obtener_elemento(aux)
             vertice_aux['anterior'] = None
             if(vertice_aux['info'] == vertice['info']):
-                no_visitados.encolar([vertice_aux['info'], None], 0)
+                no_visitados.arribo([vertice_aux['info'], None], 0)
             else:
-                no_visitados.encolar([vertice_aux['info'], None], inf)
+                no_visitados.arribo([vertice_aux['info'], None], inf)
             aux += 1
         while(not no_visitados.vacio()):
-            dato = no_visitados.desencolar()
+            dato = no_visitados.atencion()
             camino.apilar(dato)
             pos_aux = self.buscar_vertice(dato[1][0])
             vertice_aux = self.inicio.obtener_elemento(pos_aux)
@@ -171,6 +172,7 @@ class Grafo(object):
                     nuevo_peso = dato[0] + arista['peso']
                     no_visitados.cambiar_prioridad(pos_heap, nuevo_peso)
                 aristas += 1
+        # print(no_visitados.elementos)
         return camino
 
     def busqueda_prim(self, bosque, buscado):
@@ -187,13 +189,13 @@ class Grafo(object):
         adyac = 0
         while(adyac < origen['aristas'].tamanio()):
             arista = origen['aristas'].obtener_elemento(adyac)
-            aristas.encolar([origen['info'], arista['destino']], arista['peso'])
+            aristas.arribo([origen['info'], arista['destino']], arista['peso'])
             adyac += 1
         # print(bosque)
         # print(aristas.elementos)
         # print()
         while(len(bosque) // 2 < self.tamanio() and not aristas.vacio()):
-            dato = aristas.desencolar()
+            dato = aristas.atencion()
             if(len(bosque) == 0) or ((self.busqueda_prim(bosque, dato[1][0]) is not None) ^ (self.busqueda_prim(bosque, dato[1][1]) is not None)):
                 bosque.append(dato)
                 pos_vertice = self.buscar_vertice(dato[1][1])
@@ -202,7 +204,7 @@ class Grafo(object):
                 while(adyac < nuevo_vertice['aristas'].tamanio()):
                     arista = nuevo_vertice['aristas'].obtener_elemento(adyac)
                     # print(arista)
-                    aristas.encolar([nuevo_vertice['info'], arista['destino']], arista['peso'])
+                    aristas.arribo([nuevo_vertice['info'], arista['destino']], arista['peso'])
                     adyac += 1
             # print(bosque)
             # print(aristas.elementos)
@@ -280,110 +282,3 @@ class Grafo(object):
 
 # print(grafo.buscar_arista('B','A'))
 # print(grafo.buscar_arista('A','A'))
-
-###################################################################################
-#FUNCIONES DEL EJERCICIO 6
-    def hijos_dios (self, nombre_dios):
-        """Devuelve una lista con los hijos del dios dado o None si el dios ingresado no está cargado."""
-        hijos = []
-        dios = self.buscar_vertice(nombre_dios)
-        if (dios != -1):
-            aristas = self.inicio.obtener_elemento(dios)['aristas']
-            for i in range(aristas.tamanio()):
-                elemento = aristas.obtener_elemento(i)
-                if (elemento['data'] == 'padre' or elemento['data'] == 'madre'):
-                    hijos.append(elemento['destino'])
-            return hijos
-        else:
-            return None
-  
-    def familia_dios (self, nombre_dios):
-        """Funcion que devuelve tres listas (padres, hijos y hermanos) en base al dios dado,
-        o None si el dios ingresado no está cargado."""
-        dios = self.buscar_vertice(nombre_dios)
-        if (dios != -1):
-            padres = []
-            hijos = []
-            hermanos = []
-            aristas = self.inicio.obtener_elemento(dios)['aristas']   
-            for i in range(aristas.tamanio()):
-                elemento = aristas.obtener_elemento(i)
-                if (elemento['data'] == 'hijo/a'):
-                    padres.append(elemento['destino'])
-                elif (elemento['data'] == 'padre' or elemento['data'] == 'madre'):
-                    hijos.append(elemento['destino'])
-                elif (elemento['data'] == 'hermano/a'):
-                    hermanos.append(elemento['destino'])
-            return padres, hijos, hermanos
-        else:
-            return None, None, None
-      
-    def relacion_dioses (self, vertice_origen, vertice_destino):
-        """Devuelve una lista con la/s relacion/es encontradas entre dos dioses, una lista vacia si no existe relacion."""
-        relacion = []
-        if (self.es_adyacente(vertice_origen, vertice_destino)):
-            dios = self.buscar_vertice(vertice_origen)
-            aristas = self.inicio.obtener_elemento(dios)['aristas']               
-            for i in range(aristas.tamanio()):
-                elemento = aristas.obtener_elemento(i)
-                if (vertice_destino == elemento['destino']):
-                    relacion.append(elemento['data'])
-        return relacion
-
-    def madre_dios (self, nombre_dios):
-        """Recorre lista de aristas de un dios y devuelve el nombre de su madre, o None si no tiene."""
-        dios = self.buscar_vertice(nombre_dios)
-        aristas = self.inicio.obtener_elemento(dios)['aristas']
-        madre = None 
-        for i in range(aristas.tamanio()):
-            elemento = aristas.obtener_elemento(i)
-            if (elemento['data'] == 'hijo/a'): 
-                pos = self.buscar_vertice(elemento['destino']) 
-                if (self.inicio.obtener_elemento(pos)['data']['genero'] == 'F'): #se verifica que el genero sea F para que no muestre al padre
-                    madre = elemento['destino']
-        return madre #devuelve None si el dios no tiene madre
-
-    def barrido_profundidad_dioses_madres(self, ver_origen): 
-        """Barrido en profundidad del grafo mostrando solo a los dioses que tienen madres, utilizando la funcion madre_dios."""
-        while(ver_origen < self.inicio.tamanio()):
-            vertice = self.inicio.obtener_elemento(ver_origen)
-            if(not vertice['visitado']):
-                vertice['visitado'] = True
-                madre = self.madre_dios(vertice['info'])
-                if (not madre == None): #para mostrar unicamente a los dioses que tienen madre
-                    print(vertice['info'], ' - Madre:', madre)
-                aristas = 0
-                while(aristas < vertice['aristas'].tamanio()):
-                    arista = vertice['aristas'].obtener_elemento(aristas)
-                    pos_vertice = self.buscar_vertice(arista['destino'])
-                    nuevo_vertice = self.inicio.obtener_elemento(pos_vertice)
-                    if(not nuevo_vertice['visitado']):
-                        self.barrido_profundidad_dioses_madres(pos_vertice)
-                    aristas += 1
-            ver_origen += 1
-
-    def ancestros_dios (self, nombre_dios, ancestros):
-        """Carga en la lista dada los nombres de los ancestros del dios dado."""
-        dios = self.buscar_vertice(nombre_dios)
-        aristas = self.inicio.obtener_elemento(dios)['aristas']
-        for i in range(aristas.tamanio()):
-            elemento = aristas.obtener_elemento(i)
-            if (elemento['data'] == 'hijo/a'):
-                if(elemento['destino'] not in ancestros):
-                    ancestros.append(elemento['destino'])
-                    self.ancestros_dios(elemento['destino'], ancestros)
-
-    def nietos_dios (self, nombre_dios):
-        """Devuelve una lista con los nietos de un dios dado accediendo a los hijos de éste 
-        y usando hijos_dios para agregar a los hijos de cada uno a la lista de nietos."""
-        nietos = []
-        dios = self.buscar_vertice(nombre_dios)
-        aristas = self.inicio.obtener_elemento(dios)['aristas']
-        for i in range(aristas.tamanio()):
-            elemento = aristas.obtener_elemento(i)
-            if (elemento['data'] == 'padre' or elemento['data'] == 'madre'):
-                hijos = self.hijos_dios(elemento['destino'])
-                for i in range(len(hijos)):
-                    if hijos[i] not in nietos:
-                        nietos.append(hijos[i])
-        return nietos
