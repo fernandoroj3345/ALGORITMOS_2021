@@ -4,23 +4,23 @@ from TDA_Cola import *
 Implementar un algoritmo que permita generar un árbol con los datos de la siguiente tabla y
 resuelva las siguientes consultas:
 
-A. listado inorden de las criaturas y quienes la derrotaron;
-B. se debe permitir cargar una breve descripción sobre cada criatura;
-C. mostrar toda la información de la criatura Talos;
-D. determinar los 3 héroes o dioses que derrotaron mayor cantidad de criaturas;
-E. listar las criaturas derrotadas por Heracles;
-F. listar las criaturas que no han sido derrotadas;
-G. además cada nodo debe tener un campo “capturada” que almacenará el nombre del héroe
+A)Listado inorden de las criaturas y quienes la derrotaron;
+B) se debe permitir cargar una breve descripción sobre cada criatura;
+C) mostrar toda la información de la criatura Talos;
+D) Determinar los 3 héroes o dioses que derrotaron mayor cantidad de criaturas;
+E) Listar las criaturas derrotadas por Heracles;
+F) Listar las criaturas que no han sido derrotadas;
+G) Además cada nodo debe tener un campo “capturada” que almacenará el nombre del héroe
 o dios que la capturo;
-H. modifique los nodos de las criaturas Cerbero, Toro de Creta, Cierva Cerinea y Jabalí de
+H) Modifique los nodos de las criaturas Cerbero, Toro de Creta, Cierva Cerinea y Jabalí de
 Erimanto indicando que Heracles las atrapó;
-I. se debe permitir búsquedas por coincidencia;
-J. eliminar al Basilisco y a las Sirenas;
-K. modificar el nodo que contiene a las Aves del Estínfalo, agregando que Heracles
+I) Se debe permitir búsquedas por coincidencia;
+J) Eliminar al Basilisco y a las Sirenas;
+K) Modificar el nodo que contiene a las Aves del Estínfalo, agregando que Heracles
 derroto a varias;
-L. modifique el nombre de la criatura Ladón por Dragón Ladón;
-M. realizar un listado por nivel del árbol;
-N. muestre las criaturas capturadas por Heracles.
+L) Modifique el nombre de la criatura Ladón por Dragón Ladón;
+M) Realizar un listado por nivel del árbol;
+N) Muestre las criaturas capturadas por Heracles.
 '''
 datos = [ 
     {'nombre' : 'Ceto', 'capturada' : '', 'descripcion' : ''},

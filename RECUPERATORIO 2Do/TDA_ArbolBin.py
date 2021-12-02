@@ -1,5 +1,5 @@
-from TDACola import Cola
-from TDALista import Lista
+from TDA_Cola import Cola
+from TDA_Lista import Lista
 
 class Arbol (object):
 
@@ -94,21 +94,6 @@ class Arbol (object):
             if (self.der is not None):
                 self.der.inorden()
 
-###########################################################################################
-#Funcion para punto 5 de Ejercio 15
-
-    def inorden_dinosaurios (self):#Esta funcion es la principal para crear los demas in orden.
-        """Realiza el barrido inorden_dinosaurios del arbol.
-        Los elementos se listan en orden ascendente (menor a mayor)."""
-        if (self.info is not None):
-            if (self.izq is not None):
-                self.izq.inorden_dinosaurios()
-            if (self.info=='Tyrannosaurus rex'):
-                print (self.info, self.datos)
-            if (self.der is not None):
-                self.der.inorden_dinosaurios()
-
-#########################################################################################
     def postorden (self):
         """Realiza el barrido postorden del arbol.
         Los elementos se listan en orden descendente (mayor a menor)."""
@@ -149,6 +134,7 @@ class Arbol (object):
                 print(self.info)
             if(self.der is not None):
                 self.der.busqueda_proximidad(clave)
+
 
     def reemplazar (self):
         """Determina el nodo que remplazará al que se elimina."""
@@ -202,6 +188,21 @@ class Arbol (object):
         self.actualizar_altura()
         return info, datos
 
+    def contar_ocurrencias(self, buscado):
+            cantidad = 0
+            if(self.info is not None):
+                if(self.info == buscado):
+                    cantidad += 1
+                if(self.izq is not None):
+                    cantidad += self.izq.contar_ocurrencias(buscado)
+                if(self.der is not None):
+                    cantidad += self.der.contar_ocurrencias(buscado)
+            return cantidad
+
+
+
+
+
     def barrido_por_nivel (self):
         """Realiza el barrido por nivel del arbol."""
         pendientes = Cola()
@@ -224,34 +225,76 @@ class Arbol (object):
             if (nodo.izq is not None):
                 pendientes.arribo(nodo.izq)
             if (nodo.der is not None):
-                pendientes.arribo(nodo.der)               
+                pendientes.arribo(nodo.der)    
 
-#########Funciones EJ 1 Recuperatorio Parcial 2########################################
+####################FUNCIONES EXTRA################################
+#########Funciones EJ 1 (Recuperatorio Parcial 2) ########################################
 
-def Dino_792(self, clave):
-    pos = self.busqueda(clave)
-    if pos :    
-    print(pos.datos)
+#Punto 4
+    def mostrarDino_792(self,clave):
+        pos = self.busqueda(clave)
+        if pos :
+            print (pos.datos) 
 
-
-buscado = input('Comience a escribir el nombre del Dinosaurio que desea modificar: ')
-buscado(buscado)
-buscado = input('Ingrese el nombre completo del Dinosauro que desea cambiar de la lista anterior: ')
-pos = ArbolNombresDinos.buscado(buscado)
-if (pos):
-    nuevo_nombre = input('Ingrese el nuevo nombre: ')
-    nombre= ArbolNombresDinos.eliminar_nodo(buscado)
-    ArbolNombresDinos['nombre'] = nuevo_nombre
-    arbol = ArbolNombresDinos.insertar_nodo(nuevo_nombre)
-print()
-# arbol.inorden()
-
+#Punto 5
+    def busqueda_Trex(self, clave):
+            if(self.info is not None):
+                    if(self.info == clave):
+                        print(self.datos)
+                    if(self.izq is not None):
+                        self.izq.busqueda_Trex(clave)
+                    if(self.der is not None):
+                        self.der.busqueda_Trex(clave)
     
-def busqueda_Raptor(self, clave):
-    if(self.info is not None):
-        if(self.info == clave):
-            print('Ubicacion',self.datos['ubicacion'])
-        if(self.izq is not None):
-            self.izq.busqueda_Raptor(clave)
-        if(self.der is not None):
-            self.der.busqueda_Raptor(clave)
+#Punto 6 
+    def modificar_dino(self):
+        buscado = input('Ingrese El Nombre Completo Del Dinosauro Que Desea Cambiar De La Lista Anterior: ')
+        pos = self.busqueda(buscado)
+        if  pos:
+            self.busqueda(buscado)
+            nuevo_nombre = input('Ingrese el nuevo nombre: ')
+            nombre, datos = self.eliminar_nodo(buscado)
+            datos['nombre'] = nuevo_nombre
+            self = self.insertar_nodo(nuevo_nombre, datos)
+            print()
+    # arbol.inorden()
+
+
+#Punto 7
+    def busqueda_Raptor(self, clave):
+        if(self.info is not None):
+            if(self.info == clave):
+                print('Ubicacion',self.datos['ubicacion'])
+            if(self.izq is not None):
+                self.izq.busqueda_Raptor(clave)
+            if(self.der is not None):
+                self.der.busqueda_Raptor(clave)
+
+
+#Punto 8
+    def contar_ocurrencias(self, buscado):
+            cantidad = 0
+            if(self.info is not None):
+                if(self.info == buscado):
+                    cantidad += 1
+                if(self.izq is not None):
+                    cantidad += self.izq.contar_ocurrencias(buscado)
+                if(self.der is not None):
+                    cantidad += self.der.contar_ocurrencias(buscado)
+            return cantidad
+            self.inorden()
+
+'''
+    #Funcion para punto 5 de Ejercio 15
+
+        def inorden_dinosaurios (self):#Esta funcion es la principal para crear los demas in orden.
+            """Realiza el barrido inorden_dinosaurios del arbol.
+            Los elementos se listan en orden ascendente (menor a mayor)."""
+            if (self.info is not None):
+                if (self.izq is not None):
+                    self.izq.inorden_dinosaurios()
+                if (self.info=='Tyrannosaurus rex'):
+                    print (self.info, self.datos)
+                if (self.der is not None):
+                    self.der.inorden_dinosaurios()
+'''

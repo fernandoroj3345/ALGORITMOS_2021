@@ -1,7 +1,7 @@
-from TDALista import Lista
-from TDACola import Cola
+from TDA_Lista import Lista
+from TDA_Cola import Cola
 from TDA_HEAPMIN import HeapMin
-from TDAPILA import Pila
+from TDA_PILA import Pila
 from math import inf
 from copy import deepcopy
 
@@ -145,43 +145,43 @@ class Grafo(object):
         return resultado
 
     def dijkstra(self, ver_origen, ver_destino):
-        """Algoritmo de Dijkstra para hallar el camino mas corto."""
-        no_visitados = HeapMin()
-        camino = Pila()
-        aux = 0
-        while(aux < self.tamanio()):
-            vertice = self.inicio.obtener_elemento(ver_origen)
-            vertice_aux = self.inicio.obtener_elemento(aux)
-            vertice_aux['anterior'] = None
-            if(vertice_aux['info'] == vertice['info']):
-                no_visitados.arribo([vertice_aux['info'], None], 0)
-            else:
-                no_visitados.arribo([vertice_aux['info'], None], inf)
-            aux += 1
-        while(not no_visitados.vacio()):
-            dato = no_visitados.atencion()
-            camino.apilar(dato)
-            pos_aux = self.buscar_vertice(dato[1][0])
-            vertice_aux = self.inicio.obtener_elemento(pos_aux)
-            aristas = 0
-            while(aristas < vertice_aux['aristas'].tamanio()):
-                arista = vertice_aux['aristas'].obtener_elemento(aristas)
-                pos_heap = no_visitados.busqueda(arista['destino'])
-                if(pos_heap is not None and no_visitados.elementos[pos_heap][0] > dato[0] + arista['peso']):
-                    no_visitados.elementos[pos_heap][1][1] = dato[1][0]
-                    nuevo_peso = dato[0] + arista['peso']
-                    no_visitados.cambiar_prioridad(pos_heap, nuevo_peso)
-                aristas += 1
-        # print(no_visitados.elementos)
-        return camino
+            """Algoritmo de Dijkstra para hallar el camino mas corto."""
+            no_visitados = HeapMin()
+            camino = Pila()
+            aux = 0
+            while(aux < self.tamanio()):
+                vertice = self.inicio.obtener_elemento(ver_origen)
+                vertice_aux = self.inicio.obtener_elemento(aux)
+                vertice_aux['anterior'] = None
+                if(vertice_aux['info'] == vertice['info']):
+                    no_visitados.arribo([vertice_aux['info'], None], 0)
+                else:
+                    no_visitados.arribo([vertice_aux['info'], None], inf)
+                aux += 1
+            while(not no_visitados.vacio()):
+                dato = no_visitados.atencion()
+                camino.apilar(dato)
+                pos_aux = self.buscar_vertice(dato[1][0])
+                vertice_aux = self.inicio.obtener_elemento(pos_aux)
+                aristas = 0
+                while(aristas < vertice_aux['aristas'].tamanio()):
+                    arista = vertice_aux['aristas'].obtener_elemento(aristas)
+                    pos_heap = no_visitados.busqueda(arista['destino'])
+                    if(pos_heap is not None and no_visitados.elementos[pos_heap][0] > dato[0] + arista['peso']):
+                        no_visitados.elementos[pos_heap][1][1] = dato[1][0]
+                        nuevo_peso = dato[0] + arista['peso']
+                        no_visitados.cambiar_prioridad(pos_heap, nuevo_peso)
+                    aristas += 1
+                # print(no_visitados.elementos)
+            return camino
 
-    def busqueda_prim(self, bosque, buscado):
+def busqueda_prim(self, bosque, buscado):
         for elemento in bosque:
             if(buscado in elemento[1]):
                 return elemento
 
 
-    def prim(self):
+def prim(self):
         """Algoritmo de Prim para hallar el árbol de expansión mínimo."""
         bosque = []
         aristas = HeapMin()
