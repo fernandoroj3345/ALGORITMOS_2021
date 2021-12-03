@@ -1,4 +1,4 @@
-from TDA_ArbolBinario import *
+from TDA_ArbolBin import *
 from TDA_Cola import *
 
 '''Una empresa de nano satélites dedicada al monitoreo de lotes campo destinados al agro, tiene

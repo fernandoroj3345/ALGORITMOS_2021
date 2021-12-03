@@ -52,9 +52,13 @@ network.insertar_arista(17, 'Switch 1', 'Debian')
 network.insertar_arista(18, 'Switch 1', 'Ubuntu')
 network.insertar_arista(22, 'Switch 1', 'Impresora')
 network.insertar_arista(80, 'Switch 1', 'Mint')
+network.insertar_arista(11,  'Router 2', 'Red Hat')
 
-#2)Realizar un barrido en profundidad y amplitud partiendo desde las tres notebook:
+#############################################################################################################
+
+#2)Realizar un barrido en Profundidad y Amplitud partiendo desde las tres notebook:
 # Red Hat, Debian, Arch;
+print('Punto Nº 2')
 print ('BARRIDO EN AMPLITUD:')
 pos = network.buscar_vertice('Red Hat') 
 print('Barrido en profundidad de Red Hat Es:')
@@ -113,9 +117,11 @@ print('El camino más corto de Red Hat a MongoDB Es :')
 camino_mas_corto('Red Hat', 'MongoDB')
 print('')
 
-'''
-#4) Encontrar el árbol de expansión mínima;
 
+##################################################################################################################
+
+#4) Encontrar el árbol de expansión mínima;
+print('PUNTO Nº 4')
 exp_mini = network.prim()#Arbol de expansión minimo.
 peso = 0
 print('Árbol De Expansión Mínima Es:')
@@ -125,13 +131,11 @@ for elemento in exp_mini:
 print('El Costo Total Es', peso, 'km.')
 print('')
 
-
+#######################################################################################################################
 
 #5) La impresora esta temporalmente fuera de linea por mantenimiento, quítela del grafo y
 #realice un barrido en profundidad para corroborar que efectivamente fue borrada;
-
+print('PUNTO Nº5')
 network.eliminar_vertice('Impresora')
 print('Barrido en profundidad para corroborar que se elimino Impresora')
 network.barrido_profundidad(0)
-
-'''

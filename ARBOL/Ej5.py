@@ -1,5 +1,5 @@
-from TDA_ArbolBinario import *
-from TDA_Cola import *
+from TDA_ArbolBin import Arbol
+from TDA_Cola import Cola
 
 '''Dado un árbol con los nombre de los superhéroes y villanos de la saga Marvel Cinematic Universe
 (MCU), desarrollar un algoritmo que contemple lo siguiente:
@@ -45,12 +45,13 @@ for personaje in datos:#Para cada personaje en el diccionario inserto los nodos.
     arbol = arbol.insertar_nodo(personaje['nombre'], personaje) # por el arbol avl
 
 
-#B)
+#B)Listar los villanos ordenados alfabéticamente;
+
 print('Los Villanos ordenados alfabeticamente son:')
 arbol.inorden_solo_villanos()
 print()
 
-#C)
+#C) Mostrar todos los superhéroes que empiezan con C;
 print('Los Superheroes que empiezan con C son:')
 arbol.inorden_heroes_LetraC()
 print()

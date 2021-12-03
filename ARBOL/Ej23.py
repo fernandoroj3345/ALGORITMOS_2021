@@ -1,5 +1,5 @@
-from TDA_ArbolBinario import *
-from TDA_Cola import *
+from TDA_ArbolBin import Arbol
+from TDA_Cola import Cola
 '''
 Implementar un algoritmo que permita generar un árbol con los datos de la siguiente tabla y
 resuelva las siguientes consultas:
@@ -67,22 +67,23 @@ criaturas = Arbol()
 for criatura in datos:# Armado del arbol
     criaturas = criaturas.insertar_nodo(criatura['nombre'], criatura) 
 
-print("\n") #A
+#A)Listado inorden de las criaturas y quienes la derrotaron;
+print("\n")
 criaturas.barrido_derrotados_por()
 
 
-
-criatura = input('\nIngrese una criatura para editar: ') #B
+#B) se debe permitir cargar una breve descripción sobre cada criatura;
+criatura = input('Ingrese Una Criatura Para Editar: ') 
 criaturas.cargar_descripcion(criatura)
 
 
-
-print('\nInformacion de la criatura Talos:') #CC
+#C) mostrar toda la información de la criatura Talos;
+print('Informacion De La Criatura Talos:')
 criaturas.mostrar_informacion('Talos')
 
 
-
-def ordenar(elemento): #D
+#D) Determinar los 3 héroes o dioses que derrotaron mayor cantidad de criaturas;
+def ordenar(elemento): 
     return (elemento[1])
 
 dic = {} #Hago diccionario vacio para poder cargar luego.
@@ -94,17 +95,19 @@ print('\nHeroes/Dioses que derrotaron a la mayor cantidad de criaturas:')
 for pos in range (0,3):
 	print(lista[pos][0], '(derroto a',  lista[pos][1], 'criatura(s))') # [i]:posicion en la lista... []:campo
 
-
-print('\nLista de criaturas derrotadas por Heracles:') #E
+#E) Listar las criaturas derrotadas por Heracles;
+print('\nLista de criaturas derrotadas por Heracles:')
 criaturas.criaturas_derrotadas('Heracles')
 
 
-
-print('\nLista de criaturas que no han sido derrotadas:') #F
+#F) Listar las criaturas que no han sido derrotadas;
+print('\nLista de criaturas que no han sido derrotadas:')
 criaturas.criaturas_no_derrotadas()
 
 
-#H
+#H) Modifique los nodos de las criaturas Cerbero, Toro de Creta, Cierva Cerinea y Jabalí de
+#Erimanto indicando que Heracles las atrapó;
+
 criaturas.modificar_captura('Cerbero','Heracles')
 criaturas.modificar_captura('Toro de Creta','Heracles')
 criaturas.modificar_captura('Cierva de Cerinea','Heracles')
@@ -112,13 +115,13 @@ criaturas.modificar_captura('Jabalí de Erimanto','Heracles')
 print()
 # criaturas.inorden_criaturas()
 
-#I
+#I)Se debe permitir búsquedas por coincidencia;
 clave = input('Comience a escribir parte del nombre de una criatura para buscarla: ')
 print('Criaturas que contienen "', clave, '" en su nombre:' )
 criaturas.busqueda_por_coincidencia(clave)
 print()
 
-#J
+#J) Eliminar al Basilisco y a las Sirenas;
 info, datos = criaturas.eliminar_nodo('Basilisco')
 print (info, 'ha sido eliminado')
 info, datos = criaturas.eliminar_nodo('Sirenas')
@@ -126,7 +129,8 @@ print (info, 'ha sido eliminado')
 print()
 # criaturas.inorden_criaturas()
 
-#K
+#K) Modificar el nodo que contiene a las Aves del Estínfalo, agregando que Heracles
+#derroto a varias;
 pos = criaturas.busqueda('Aves del Estínfalo')
 if (pos):
     pos.datos['capturada'] = 'Heracles'
@@ -141,12 +145,12 @@ if (pos):
     criaturas = criaturas.insertar_nodo('Dragón Ladón', datos)
 print()
 
-#M
+#M) Realizar un listado por nivel del árbol;
 print('\nBarrido por nivel del arbol:')
 criaturas.barrido_por_nivel()
 print()
 
-#N
+#N) Muestre las criaturas capturadas por Heracles.
 print('Lista de criaturas capturadas por Heracles:')
 criaturas.criaturas_derrotadas('Heracles')
 print()
